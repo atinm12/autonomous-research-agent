@@ -1,0 +1,13 @@
+{
+  "name": "company_profile",
+  "description": "Retrieve basic company profile information.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "ticker": {
+        "type": "string"
+      }
+    },
+    "required": ["ticker"]
+  }
+}
