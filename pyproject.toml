@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-research-agent"
+version = "0.1.0"
+description = "Autonomous AI research agent for financial analysis using LLMs and vector databases"
+requires-python = ">=3.9"
+
+dependencies = [
+    "openai",
+    "anthropic",
+    "chromadb",
+    "sentence-transformers",
+    "python-dotenv",
+    "loguru",
+    "pandas",
+    "numpy",
+    "requests",
+    "pytest"
+]
