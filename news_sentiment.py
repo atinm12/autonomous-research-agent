@@ -1,8 +1,13 @@
 import feedparser
 from textblob import TextBlob
 
+from tools.utils import cache_result, rate_limit
 
+
+@cache_result
+@rate_limit(seconds=2)
 def company_news_sentiment(company):
+
     url = f"https://news.google.com/rss/search?q={company}"
 
     feed = feedparser.parse(url)
@@ -12,6 +17,7 @@ def company_news_sentiment(company):
     results = []
 
     for article in articles:
+
         title = article.title
 
         sentiment = TextBlob(title).sentiment.polarity

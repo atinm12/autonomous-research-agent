@@ -1,7 +1,12 @@
 import requests
 
+from tools.utils import cache_result, rate_limit
 
+
+@cache_result
+@rate_limit(seconds=2)
 def search_sec_filings(company_name):
+
     url = "https://efts.sec.gov/LATEST/search-index"
 
     payload = {
@@ -11,7 +16,7 @@ def search_sec_filings(company_name):
     }
 
     headers = {
-        "User-Agent": "your_email@example.com"
+        "User-Agent": "atinmathur12@gmail.com"
     }
 
     response = requests.post(
