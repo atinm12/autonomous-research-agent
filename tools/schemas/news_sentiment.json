@@ -1,0 +1,19 @@
+{
+  "name": "news_sentiment",
+  "description": "Analyze sentiment of recent financial news.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "num_articles": {
+        "type": "integer"
+      },
+      "lookback_days": {
+        "type": "integer"
+      }
+    },
+    "required": ["query"]
+  }
+}

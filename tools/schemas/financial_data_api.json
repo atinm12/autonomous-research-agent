@@ -1,0 +1,29 @@
+{
+  "name": "financial_data_api",
+  "description": "Retrieve financial statements and ratios.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "ticker": {
+        "type": "string"
+      },
+      "statement_type": {
+        "type": "string",
+        "enum": [
+          "income_statement",
+          "balance_sheet",
+          "cash_flow",
+          "ratios"
+        ]
+      },
+      "period": {
+        "type": "string",
+        "enum": ["annual", "quarterly"]
+      },
+      "years": {
+        "type": "integer"
+      }
+    },
+    "required": ["ticker", "statement_type", "period"]
+  }
+}
