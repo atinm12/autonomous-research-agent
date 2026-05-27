@@ -1,0 +1,22 @@
+{
+  "name": "web_search",
+  "description": "Search the web for financial news, analysis, and commentary.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Search query"
+      },
+      "num_results": {
+        "type": "integer",
+        "description": "Number of results to return"
+      },
+      "date_range": {
+        "type": "string",
+        "description": "Optional date filter"
+      }
+    },
+    "required": ["query"]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "vector_db_search",
+  "description": "Search long-term memory vector database.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "top_k": {
+        "type": "integer"
+      },
+      "filter": {
+        "type": "object",
+        "description": "Optional metadata filters"
+      }
+    },
+    "required": ["query"]
+  }
+}
