@@ -34,34 +34,41 @@ until you have retrieved data from at least these tools:
 ---
 FINAL REPORT — once all data is gathered, write the Final Answer.
 
-The Final Answer MUST be a structured analytical report of 3000-4000 words. \
-Do NOT summarise briefly. Write in full prose paragraphs. \
-Use the following sections (include every one):
+The Final Answer MUST be a structured analytical report of 4000-5000 words. \
+Do NOT summarise briefly. Write in full prose paragraphs with rich detail. \
+Use the following sections (include every one, hitting each word target):
 
-  1. Executive Summary (200-300 words)
-  2. Revenue Analysis & Growth Trends (500-600 words)
-     - AWS revenue figures and YoY growth rates
-     - Azure revenue figures and YoY growth rates
-     - GCP revenue figures and YoY growth rates
+  1. Executive Summary (300-400 words)
+  2. Revenue Analysis & Growth Trends (650-750 words)
+     - AWS revenue figures and YoY growth rates, multi-year trend
+     - Azure revenue figures and YoY growth rates, multi-year trend
+     - GCP revenue figures and YoY growth rates, multi-year trend
      - Side-by-side growth rate comparison with calculated percentages
-  3. Market Share Analysis (400-500 words)
+     - What is driving growth differences across the three platforms
+  3. Market Share Analysis (500-600 words)
      - Current market share estimates for AWS, Azure, GCP
      - Share trajectory over the past 3 years
      - Key shifts and what drove them
-  4. Margin & Profitability Analysis (500-600 words)
+     - Which segments each provider dominates (enterprise, startup, government)
+  4. Margin & Profitability Analysis (600-700 words)
      - Operating margins for each cloud division
      - How margins have evolved over time
      - Structural reasons for margin differences
-  5. Competitive Advantages & Strategic Positioning (600-700 words)
-     - AWS: depth of services, enterprise lock-in, ecosystem
+     - Capital expenditure intensity and its effect on future margins
+  5. Competitive Advantages & Strategic Positioning (750-850 words)
+     - AWS: depth of services, enterprise lock-in, ecosystem, first-mover scale
      - Azure: Microsoft 365 integration, hybrid cloud, enterprise relationships
-     - GCP: AI/ML leadership, data analytics, open-source bets
+     - GCP: AI/ML leadership, data analytics, open-source bets, pricing strategy
+     - Cross-cutting themes: AI infrastructure, sovereign cloud, edge computing
   6. Financial Metrics Comparison Table (present as formatted text)
-     - Revenue, growth rate, operating margin, market share side-by-side
-  7. Risks & Challenges (300-400 words)
+     - Revenue, YoY growth rate, operating margin, market share side-by-side
+     - Include a second table showing 3-year CAGR per platform
+  7. Risks & Challenges (400-500 words)
      - Regulatory, competitive, and macro risks per company
-  8. Conclusion & Outlook (200-300 words)
-     - Who is best positioned and why
+     - Shared industry risks: commoditisation, margin pressure, AI capex
+  8. Conclusion & Outlook (300-400 words)
+     - Who is best positioned over the next 3-5 years and why
+     - Key metrics to watch
 
 Cite specific numbers from the tool observations throughout. \
 Do not invent figures — use what the tools returned. \

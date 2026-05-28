@@ -2,7 +2,7 @@ from agent.core import ResearchAgent
 
 
 query = """
-Produce a comprehensive 3000-4000 word comparative analysis of the three
+Produce a comprehensive 4000-5000 word comparative analysis of the three
 major public cloud platforms: Amazon Web Services (AWS), Microsoft Azure,
 and Google Cloud Platform (GCP).
 
@@ -25,8 +25,9 @@ structured long-form report covering ALL of the following areas in depth:
 
 5. Risks, headwinds, and forward outlook
 
-The final report must be 3000-4000 words, written in full prose paragraphs,
+The final report must be 4000-5000 words, written in full prose paragraphs,
 with specific numbers cited throughout. Do not write a short summary.
+Each section must hit its word target — do not truncate any section early.
 """
 
 
