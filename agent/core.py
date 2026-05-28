@@ -22,17 +22,9 @@ class ResearchAgent:
         api_key=os.getenv("OPENAI_API_KEY")
         )
 
-        self.tools = {
-            "company_profile": lambda x: "Microsoft was founded in 1975 and is a major technology company.",
-
-            "financial_api": lambda x: "Revenue: $211B, Market Cap: $3T",
-
-            "web_search": lambda x: "Search results retrieved.",
-
-            "news_sentiment": lambda x: "Positive market sentiment detected."
-        }
         # Prevent infinite loops
-        self.max_iterations = 2
+        self.max_iterations = 10
+
     # Main ReAct reasoning loop
     def run(self, query: str) -> str:
 
@@ -40,8 +32,8 @@ class ResearchAgent:
             {
                 "role": "system",
                 "content": build_system_prompt(
-                    list(self.tools.keys())
-    )
+                    list(TOOL_REGISTRY.keys())
+                )
             },
             {
                 "role": "user",
@@ -57,7 +49,7 @@ class ResearchAgent:
 
             # Call OpenAI model
             response = self.client.chat.completions.create(
-                max_tokens=700,
+                max_tokens=2000,
                 temperature=0.2,
                 model="gpt-4o-mini",
                 messages=messages
