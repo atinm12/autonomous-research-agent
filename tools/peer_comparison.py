@@ -67,12 +67,14 @@ def compare_peers(input_str):
     # Resolve any cloud/name aliases to tickers
     resolved = []
     for token in re.split(r"[,\s/|]+", text):
-        token_lower = token.lower().strip()
+        # Strip surrounding quotes the LLM adds — e.g. '"AWS' or 'GCP"'
+        token_clean = token.strip().strip("\"'")
+        token_lower = token_clean.lower()
         if token_lower in NAME_TO_TICKER:
             resolved.append(NAME_TO_TICKER[token_lower])
-        elif token.upper() in ("AMZN", "MSFT", "GOOGL", "AAPL", "NVDA",
-                                "AMD", "INTC", "QCOM", "JPM", "BAC", "GS", "MS"):
-            resolved.append(token.upper())
+        elif token_clean.upper() in ("AMZN", "MSFT", "GOOGL", "AAPL", "NVDA",
+                                      "AMD", "INTC", "QCOM", "JPM", "BAC", "GS", "MS"):
+            resolved.append(token_clean.upper())
 
     # De-duplicate while preserving order
     seen = set()

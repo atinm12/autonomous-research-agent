@@ -39,7 +39,7 @@ def search_sec_filings(input_val):
     # Correct endpoint: GET with query params, NOT POST with JSON body
     url = "https://efts.sec.gov/LATEST/search-index"
     params = {
-        "q": f'"{query}"',
+        "q": query,
         "forms": "10-K,10-Q",
         "dateRange": "custom",
         "startdt": "2022-01-01",

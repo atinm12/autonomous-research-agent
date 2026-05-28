@@ -31,6 +31,16 @@ until you have retrieved data from at least these tools:
   financial_data_api, sec_filing_search, earnings_transcript,
   web_search, peer_comparison, calculation_engine
 
+IMPORTANT RULES:
+- Call each tool at most ONCE. Do not retry a tool that already returned data.
+- If a tool returns an error or empty result, move on to the next tool immediately. \
+  Do NOT retry the same tool with a slightly different input.
+- After calling financial_data_api AND peer_comparison AND web_search, \
+  you have enough data to write the report. Proceed to Final Answer.
+- If you have completed 6 or more iterations, STOP collecting data and \
+  write the Final Answer immediately using whatever data you have gathered. \
+  Do not attempt more tool calls.
+
 ---
 FINAL REPORT — once all data is gathered, write the Final Answer.
 
