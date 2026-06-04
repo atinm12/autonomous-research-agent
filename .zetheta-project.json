@@ -5,17 +5,20 @@
   "project_code": "1A",
   "project_title": "Autonomous Financial Research Agent with Multi-Source Synthesis",
   "submission_type": "github",
-  "submission_date": "2026-05-25T21:14:30Z",
+  "submission_date": "2026-06-04T00:00:00Z",
   "tech_stack": [
     "Python",
-    "LangChain/LangGraph",
-    "OpenAI/Anthropic API",
-    "Pinecone/Weaviate/Chroma",
+    "OpenAI API",
+    "ChromaDB",
+    "SentenceTransformers",
     "SEC EDGAR API",
-    "Financial Data API"
+    "yfinance",
+    "DuckDuckGo Search",
+    "feedparser",
+    "TextBlob"
   ],
   "duration_days": 15,
-  "github_repo_url": "https://github.com/ZethetaIntern/Project1A-[YourName]-AutonomousFinancialResearchAgent",
+  "github_repo_url": "https://github.com/ZethetaIntern/Project1A-AtinMathur-AutonomousFinancialResearchAgent",
   "assessment_criteria": {
     "architecture_design": true,
     "tool_orchestration": true,
