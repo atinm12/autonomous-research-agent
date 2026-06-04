@@ -32,14 +32,19 @@ until you have retrieved data from at least these tools:
   web_search, peer_comparison, calculation_engine
 
 IMPORTANT RULES:
+- You MUST call ALL SIX of these tools before writing the Final Answer:
+  financial_data_api, sec_filing_search, earnings_transcript,
+  web_search, peer_comparison, calculation_engine.
+  Do not skip any of them.
 - Call each tool at most ONCE. Do not retry a tool that already returned data.
 - If a tool returns an error or empty result, move on to the next tool immediately. \
   Do NOT retry the same tool with a slightly different input.
-- After calling financial_data_api AND peer_comparison AND web_search, \
-  you have enough data to write the report. Proceed to Final Answer.
-- If you have completed 6 or more iterations, STOP collecting data and \
-  write the Final Answer immediately using whatever data you have gathered. \
-  Do not attempt more tool calls.
+- financial_data_api returns TOTAL COMPANY revenue, not cloud-division revenue. \
+  AWS is a segment of Amazon, Azure is part of Microsoft's Intelligent Cloud \
+  segment, and GCP is reported separately by Alphabet. \
+  Use web_search to find the actual cloud segment revenue figures and cite them. \
+  Clearly distinguish total company revenue from cloud division revenue in your report.
+- After you have called all six required tools, write the Final Answer immediately.
 
 ---
 FINAL REPORT — once all data is gathered, write the Final Answer.

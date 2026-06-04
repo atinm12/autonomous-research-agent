@@ -2,25 +2,37 @@ import re
 
 
 def parse_llm_response(response_text):
-    if "Final Answer:" in response_text:
-        final_answer = response_text.split("Final Answer:")[1].strip()
+    """
+    Parse one LLM turn into either a tool call or a final answer.
 
-        return {
-            "type": "final",
-            "content": final_answer
-        }
+    If the LLM writes a planning block that contains both Action/Action Input
+    AND a Final Answer in the same response, we extract the FIRST tool call
+    (its position in the text comes before Final Answer:) so tools are
+    actually executed rather than skipped.
+    """
+    action_match = re.search(r"Action:\s*(.+)", response_text)
+    input_match  = re.search(r"Action Input:\s*(.+)", response_text)
+    final_pos    = response_text.find("Final Answer:")
 
-    action_match = re.search(r"Action:\s*(.*)", response_text)
-    input_match = re.search(r"Action Input:\s*(.*)", response_text)
-
+    # If there is a tool call whose Action: marker appears before Final Answer:
+    # (or there is no Final Answer at all), execute the tool.
     if action_match and input_match:
+        if final_pos == -1 or action_match.start() < final_pos:
+            return {
+                "type":  "tool",
+                "tool":  action_match.group(1).strip(),
+                "input": input_match.group(1).strip(),
+            }
+
+    # Only reach here when Final Answer comes before any Action block
+    # (or there are no Action blocks at all).
+    if final_pos != -1:
         return {
-            "type": "tool",
-            "tool": action_match.group(1).strip(),
-            "input": input_match.group(1).strip()
+            "type":    "final",
+            "content": response_text[final_pos + len("Final Answer:"):].strip(),
         }
 
     return {
-        "type": "error",
-        "content": "Could not parse LLM response"
+        "type":    "error",
+        "content": "Could not parse LLM response",
     }

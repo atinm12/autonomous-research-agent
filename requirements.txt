@@ -14,7 +14,7 @@ click==8.3.3
 curl_cffi==0.15.0
 distro==1.9.0
 docstring_parser==0.18.0
-duckduckgo_search==8.1.1
+ddgs
 durationpy==0.10
 feedparser==6.0.12
 filelock==3.29.0

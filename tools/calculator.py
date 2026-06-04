@@ -37,17 +37,65 @@ def calculation_engine(input_str):
     """
     Dispatch function for the agent's calculation_engine tool.
 
-    Accepts a plain-English string describing the calculation,
-    parses out numbers where possible, and returns a structured result.
+    Accepts:
+      - A {"data": [...]} array of company dicts with revenue/margin fields
+        (the most common LLM call pattern for multi-company analysis)
+      - A plain-English string: 'growth 411 321', 'margin 125 411', 'dcf ...'
 
     Supported calculation types (detected from keywords):
+      - data array:   {"data": [{"ticker":..,"revenue":..,"operating_margin":..}]}
       - growth rate:  'growth <current> <previous>'
       - margin:       'margin <net_income> <revenue>'
       - dcf:          'dcf <cash_flow> <growth_rate> <discount_rate>'
+      - market share: 'market share <segment> <total>'
     """
     import re
+    import json
 
-    text = str(input_str).lower().strip()
+    raw = str(input_str).strip()
+
+    # ---------------------------------------------------------------
+    # Handle {"data": [...]} multi-company array (most common LLM call)
+    # ---------------------------------------------------------------
+    try:
+        parsed = json.loads(raw)
+        data = parsed.get("data") if isinstance(parsed, dict) else None
+        if data and isinstance(data, list):
+            results = []
+            for item in data:
+                ticker  = item.get("ticker", "Unknown")
+                revenue = item.get("revenue", 0) or 0
+                op_mg   = item.get("operating_margin")
+                rev_gr  = item.get("revenue_growth")
+                grs_mg  = item.get("gross_margin")
+                net_mg  = item.get("profit_margin")
+                ebitda  = item.get("ebitda", 0) or 0
+                entry = {"ticker": ticker}
+                if revenue:
+                    entry["revenue_billions"] = round(revenue / 1e9, 2)
+                if op_mg is not None:
+                    entry["operating_margin_pct"] = round(op_mg * 100, 2)
+                if rev_gr is not None:
+                    entry["revenue_growth_pct"]   = round(rev_gr * 100, 2)
+                if grs_mg is not None:
+                    entry["gross_margin_pct"]     = round(grs_mg * 100, 2)
+                if net_mg is not None:
+                    entry["net_margin_pct"]       = round(net_mg * 100, 2)
+                if ebitda and revenue:
+                    entry["ebitda_margin_pct"]    = round(ebitda / revenue * 100, 2)
+                results.append(entry)
+            return {
+                "calculation_type": "multi_company_metrics",
+                "results": results,
+                "interpretation": (
+                    "Converted raw financial figures to percentage metrics "
+                    "for direct comparison across companies."
+                )
+            }
+    except (json.JSONDecodeError, ValueError, TypeError):
+        pass
+
+    text    = raw.lower()
     numbers = [float(n) for n in re.findall(r"[-+]?\d*\.?\d+", text)]
 
     if "growth" in text:
